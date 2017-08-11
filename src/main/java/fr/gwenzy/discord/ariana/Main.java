@@ -14,7 +14,7 @@ public class Main {
     public static IDiscordClient ariana;
     public static IDiscordClient anglophonist;
     public static IDiscordClient logged;
-    public static boolean ARIANA_LOGIN = false;
+    public static boolean ARIANA_LOGIN = true;
     public static boolean raidInProgress = false;
 
     public static final long launchTimestamp = System.currentTimeMillis();
