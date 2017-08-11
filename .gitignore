@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/uiDesigner.xml
+/.idea/
+.gitignore
+.idea/.name
+.idea/Ariana.iml
+.idea/compiler.xml
+.idea/copyright/
+.idea/encodings.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+src/main/java/fr/gwenzy/discord/ariana/Tokens.java
+target/

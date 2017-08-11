@@ -3,8 +3,12 @@ package fr.gwenzy.discord.ariana;
 import fr.gwenzy.discord.ariana.events.*;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
+import sx.blah.discord.handle.impl.obj.Role;
 import sx.blah.discord.util.DiscordException;
+import sx.blah.discord.util.Image;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +43,7 @@ public class Main {
             clientBuilder.registerListener(new MemberCommandsListener());
             clientBuilder.registerListener(new MessageNotCommandListener());
             clientBuilder.registerListener(new SuggestionListener());
-
+            clientBuilder.registerListener(new RoleCommandListener());
 
             if (login) {
                 return clientBuilder.login(); // Creates the client instance and logs the client in
@@ -52,12 +56,14 @@ public class Main {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         commands=0;
         ariana = createClient(Tokens.getTokenAriana(), ARIANA_LOGIN);
         anglophonist = createClient(Tokens.getTokenAnglophonist(), !ARIANA_LOGIN);
 
         logged = ARIANA_LOGIN?ariana:anglophonist;
+
+
 
     }
 
