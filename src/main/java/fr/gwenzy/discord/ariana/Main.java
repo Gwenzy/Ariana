@@ -38,6 +38,7 @@ public class Main {
             clientBuilder.registerListener(new ModeratorCommandsListener());
             clientBuilder.registerListener(new MemberCommandsListener());
             clientBuilder.registerListener(new MessageNotCommandListener());
+            clientBuilder.registerListener(new SuggestionListener());
 
 
             if (login) {
