@@ -10,12 +10,11 @@ public class SuggestionListener implements IListener<MessageReceivedEvent> {
     public void handle(MessageReceivedEvent messageReceivedEvent) {
         if(messageReceivedEvent.getChannel().getLongID()==Long.parseLong("274880324977033217")){
             RequestBuilder builder = new RequestBuilder(Main.ariana);
-            messageReceivedEvent.getMessage().addReaction(messageReceivedEvent.getGuild().getEmojiByName("upvote"));
-
             builder.shouldBufferRequests(true);
             builder.doAction(() -> {
                 messageReceivedEvent.getMessage().addReaction(messageReceivedEvent.getGuild().getEmojiByName("downvote"));
 
+                messageReceivedEvent.getMessage().addReaction(messageReceivedEvent.getGuild().getEmojiByName("upvote"));
                 return true;
             });
 

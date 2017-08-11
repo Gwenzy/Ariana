@@ -14,7 +14,7 @@ public class Main {
     public static IDiscordClient ariana;
     public static IDiscordClient anglophonist;
     public static IDiscordClient logged;
-    public static boolean ARIANA_LOGIN = true;
+    public static boolean ARIANA_LOGIN = false;
     public static boolean raidInProgress = false;
 
     public static final long launchTimestamp = System.currentTimeMillis();
@@ -54,8 +54,8 @@ public class Main {
 
     public static void main(String[] args){
         commands=0;
-        ariana = createClient("Mjc1NzI0MDI4Njg4MzM0ODU4.C-dxgQ.aiZcyyGrecnmrGlHy-a9F81Oy-E", ARIANA_LOGIN);
-        anglophonist = createClient("Mjc0NDUwNDY5MzQxMTAyMDgx.C-ds-Q.FIp3iuCVtJGL3kMT1rVURMH67so", !ARIANA_LOGIN);
+        ariana = createClient(Tokens.getTokenAriana(), ARIANA_LOGIN);
+        anglophonist = createClient(Tokens.getTokenAnglophonist(), !ARIANA_LOGIN);
 
         logged = ARIANA_LOGIN?ariana:anglophonist;
 
