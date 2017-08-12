@@ -20,25 +20,7 @@ public class MemberCommandsListener implements IListener<MessageReceivedEvent> {
                     messageReceivedEvent.getChannel().sendMessage("This command exists but I don't know what I have to do ;-;");
                 }
 
-            if(args.length>2)
-                if(args[1].equalsIgnoreCase("rolerequest")){
-                        String message ="";
-                        messageReceivedEvent.getChannel().sendMessage("Role request received for "+messageReceivedEvent.getAuthor().mention());
-                        for (IRole role : messageReceivedEvent.getMessage().getRoleMentions()){
-                            if(messageReceivedEvent.getAuthor().getRolesForGuild(messageReceivedEvent.getMessage().getGuild()).contains(role)){
-                                message+=(role.getName()+" : Role already owned \n");
-                            }
-                            else
-                            {
-                                if(Main.freeRoles.contains(role.getStringID())){
-                                    messageReceivedEvent.getAuthor().addRole(role);
-                                    message+=role.getName()+" : Added\n";
-                                }
 
-                            }
-                        }
-                        messageReceivedEvent.getChannel().sendMessage(message);
-                    }
 
 
 

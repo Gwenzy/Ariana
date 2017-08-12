@@ -1,6 +1,7 @@
 package fr.gwenzy.discord.ariana.events;
 
 import fr.gwenzy.discord.ariana.Main;
+import fr.gwenzy.discord.ariana.Methods.PollsMethods;
 import sx.blah.discord.api.events.IListener;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IChannel;
@@ -124,6 +125,52 @@ public class ModeratorCommandsListener implements IListener<MessageReceivedEvent
                     }
                 }
 
+                /**
+                 * POLLS
+                 */
+                if(args.length>3){
+                    if(args[1].equalsIgnoreCase("polls")){
+                        if(args[2].equalsIgnoreCase("create")){
+                            String question = "";
+                            for(int i=3; i<args.length-1; i++){
+                                question+=args[i]+" ";
+                            }
+                            question+=args[args.length-1];
+
+                            long id = PollsMethods.createPoll(question, messageReceivedEvent.getAuthor().getStringID());
+
+                            if(id!=-1L){
+                                messageReceivedEvent.getChannel().sendMessage("Your poll has been created, ID "+id);
+                            }
+                            else
+                                messageReceivedEvent.getChannel().sendMessage("Error while attempting to create this poll please check the syntax :\n "+Main.COMMAND_PREFIX+"polls create <Question>");
+                        }
+                        else if(args[2].equalsIgnoreCase("addAnswer")) {
+                            if(args.length>4){
+                                String answer = "";
+                                for(int i=4; i<args.length-1; i++){
+                                    answer+=args[i]+" ";
+                                }
+                                answer+=args[args.length-1];
+
+                                try{
+                                    int pollID = Integer.parseInt(args[3]);
+                                    if(PollsMethods.addAnswer(pollID, answer)){
+                                        messageReceivedEvent.getChannel().sendMessage("Your answer has been added");
+                                    }
+                                    else
+                                        messageReceivedEvent.getChannel().sendMessage("An error has occured, maybe this poll doesn't exist or please check the syntax :\n"+Main.COMMAND_PREFIX+"polls addAnswer <Poll ID> <Answer>");
+                                }catch(NumberFormatException e){
+                                    messageReceivedEvent.getChannel().sendMessage("Poll ID must be a number");
+                                }
+                            }
+                            else {
+                                messageReceivedEvent.getChannel().sendMessage("Something is missing on your command, please check the syntax :\n "+Main.COMMAND_PREFIX+"polls addAnswer <Poll ID> <Answer>");
+                            }
+
+                        }
+                    }
+                }
 
 
 

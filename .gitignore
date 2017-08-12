@@ -14,3 +14,5 @@
 .idea/workspace.xml
 src/main/java/fr/gwenzy/discord/ariana/Tokens.java
 target/
+/src/main/java/fr/gwenzy/discord/ariana/DatabaseMethods.java
+modules/

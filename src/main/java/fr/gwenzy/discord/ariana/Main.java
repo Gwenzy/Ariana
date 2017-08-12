@@ -18,13 +18,12 @@ public class Main {
     public static IDiscordClient ariana;
     public static IDiscordClient anglophonist;
     public static IDiscordClient logged;
-    public static boolean ARIANA_LOGIN = true;
+    public static boolean ARIANA_LOGIN = false;
     public static boolean raidInProgress = false;
 
     public static final long launchTimestamp = System.currentTimeMillis();
     public static final List<String> operatorsID = Arrays.asList("205809466514472960", "224940744362819584");
     public static final List<String> moderators = Arrays.asList("164882649184206848", "141268684315426816", "225636465990828032", "105725740481314816");
-    public static final List<String> freeRoles = Arrays.asList("273595437204766731", "276029366524444673", "273419026342871050", "273418600969273344", "325564844357189643", "273544657684660224", "273427329047461889", "273417915980709888", "273417845981839362", "273580739356917761");
     public static final String COMMAND_PREFIX = ARIANA_LOGIN?"@Ariana ":"@TestBot ";
     public static int commands;
 
@@ -34,16 +33,16 @@ public class Main {
         clientBuilder.withToken(token); // Adds the login info to the builder
         try {
 
-            clientBuilder.registerListener(new ReadyListener());
+            /*clientBuilder.registerListener(new ReadyListener());
             clientBuilder.registerListener(new AdminCommandsListener());
             clientBuilder.registerListener(new UserJoinListener());
             clientBuilder.registerListener(new UserLeaveListener());
-            clientBuilder.registerListener(new MemberAgreeListener());
-            clientBuilder.registerListener(new ModeratorCommandsListener());
+            clientBuilder.registerListener(new MemberAgreeListener());*/
+            clientBuilder.registerListener(new ModeratorCommandsListener());/*
             clientBuilder.registerListener(new MemberCommandsListener());
             clientBuilder.registerListener(new MessageNotCommandListener());
             clientBuilder.registerListener(new SuggestionListener());
-            clientBuilder.registerListener(new RoleCommandListener());
+            clientBuilder.registerListener(new RoleCommandListener());*/
 
             if (login) {
                 return clientBuilder.login(); // Creates the client instance and logs the client in
