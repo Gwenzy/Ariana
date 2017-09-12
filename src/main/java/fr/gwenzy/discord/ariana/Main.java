@@ -6,7 +6,7 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.obj.Role;
 import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.Image;
-
+import fr.gwenzy.discord.ariana.Methods.RolesMethods;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,6 +20,7 @@ public class Main {
     public static IDiscordClient logged;
     public static boolean ARIANA_LOGIN = true;
     public static boolean raidInProgress = false;
+    public static HashMap<String, Long> rolesList = new HashMap();
 
     public static final long launchTimestamp = System.currentTimeMillis();
     public static final List<String> operatorsID = Arrays.asList("205809466514472960", "224940744362819584");
@@ -33,6 +34,7 @@ public class Main {
         ClientBuilder clientBuilder = new ClientBuilder(); // Creates the ClientBuilder instance
         clientBuilder.withToken(token); // Adds the login info to the builder
         try {
+            RolesMethods.initRoles();
 
             clientBuilder.registerListener(new ReadyListener());
             clientBuilder.registerListener(new AdminCommandsListener());
